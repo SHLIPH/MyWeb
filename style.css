@@ -1,0 +1,278 @@
+* {
+  box-sizing: border-box;
+}
+
+#nav {
+  background-color: #ff6600;
+  width: 100%;
+  border: 1px solid red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;    /* 加上這一行 */
+}
+
+#content {
+  
+  position: relative;
+  top: 74px;
+  padding: 15px;
+}
+
+.container {
+  
+  width: 800px;
+  margin: 0 auto;
+}
+
+#about, #my-work, #contact-me {
+}
+
+.menu li {
+  width: 150px;
+  padding: 10px 0px;
+
+  border: 1px solid #fff;
+  border-radius: 8px;
+
+  list-style-type: none;
+  text-align: center;
+  background-color: #ff6600;
+  color: #fff;
+  
+  display: inline-block;
+}
+
+a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+
+li:hover  {
+  border: 1px solid #ff6600;
+  background-color: #fff;
+}
+
+li:hover a {
+  color: #ff6600;
+  font-weight: 800;
+}
+
+#my-avatar {
+  
+  float: left;
+  margin-right: 20px;
+}
+#my-avatar img {
+  width: 160px;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+table {
+  font-size: 14px;
+  text-align: left;
+}
+
+th, td {
+  vertical-align: top;
+}
+
+td {
+  color: #666;
+  padding-left: 10px;
+}
+
+hr {
+  border: 0.5px solid #eee;
+}
+
+.item {
+  position: relative;
+  max-width: 30%;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.item-info {
+  background-color: rgba(255,255,255,.8);   /* 背景半透明 */
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 100%;
+  height: 100%;
+  
+  text-align: center;
+  padding: 25px 10px;
+  
+  /*opacity: 0;*/
+  
+  display: none;
+}
+
+.item img {
+	width: 100%;
+}
+
+.item-info:hover{
+	/*opacity: 1;*/
+}
+
+.item:hover .item-info{
+	display: block;
+}
+
+#contact-me {
+  
+}
+
+form.contact-form {
+  
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+
+.form-row input, .form-row textarea {
+  border-radius: 3px;
+  width: 100%;
+  border: 1px solid #D6D9DC;
+  padding: 7px;
+}
+
+.form-row textarea {
+  resize: none;
+  height: 4em;
+}
+
+.form-row button {
+  border: none;
+  border-radius: 3px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.form-row button[type="sumbit"] {
+  background-color: #5995DA;
+  color: #FFFFFF;
+}
+
+.form-row button:hover {
+  background-color: #76AEED;
+}
+
+.form-row button:active {
+  background-color: #407FC7;
+}
+
+/*是想連結到 #about、#my-work、#contact-me 等內容區域的時候，
+由於被連結的區域會移到視窗的「頂部」，
+所以又跑到了被導覽列蓋住的地方。
+A > B: Child Selector
+Select direct children of an element*/
+#content > .container > div {
+  padding: 74px 0;
+}
+
+hr.bar {
+  border: 2px solid #ff6600;
+  width: 80px;
+}
+
+.menu {
+  float: right;
+}
+
+h1 {
+  text-align: center;
+}
+
+#about h1 {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+#my-work-gallery {
+    text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+	.menu-button,
+    .menu-button-checkbox {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .container {
+    width: auto;
+  }
+  .menu-button {
+    float: right;
+    font-size: 25px;
+    line-height: 40px;
+    color: white;
+    background: transparent;
+    padding: 0 15px;
+    border: 0;
+  }
+  .menu-button-checkbox {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 55px;
+    height: 40px;
+	opacity: 0; /*讓 checkbox 變成透明，這樣一來，視覺上看起來是在點擊漢堡按鈕，但其實是在點擊 checkbox。*/
+  }
+  /*
+  :checked 是一種假類別 (pseudo-classes)
+  波浪號 (~) 是一種同層全體選擇器 (general sibling combinator)，只要位在同一個層階，
+  前方元素 (.menu-button-checkbox) 後方所有的目標物 (.menu) 都會被選中
+  */
+  .menu-button-checkbox:checked ~ .menu {
+    display: block;
+  }
+  .menu {
+	display: none;
+    margin-top: 0;
+    padding-left: 0;
+    position: fixed;
+    right: 0;
+    top: 40px;
+    width: 150px;
+    height: auto;
+    background: red;
+  }
+
+  .menu li {
+    border: 0;
+    border-radius: 0;
+  }
+  #my-avatar {
+    width: 100%; 
+  }
+
+  #my-avatar img {
+    display: block;
+    margin: 15px auto;
+  }  
+  .item {
+    max-width: 100%;
+  }
+  form.contact-form {
+    width: 80%;
+  }
+}
